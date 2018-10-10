@@ -21,13 +21,15 @@ class ViewController: UIViewController {
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
-            print("Card number: \(cardNumber)")
+            flipCard(withEmohi: emojiChoices[cardNumber], on: sender)
         } else {
             print("Card not in buttons array")
         }
     }
     
     @IBOutlet var cardButtons: [UIButton]!
+    
+    var emojiChoices = ["👻", "🎃", "👻", "🎃"]
     
     
     func flipCard(withEmohi emoji: String, on button: UIButton) {
