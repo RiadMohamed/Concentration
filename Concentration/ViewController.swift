@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     private(set) var flipCount = 0 {
         didSet {
-
+            updateFlipCountLabel()
         }
     }
     
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     }
     
     // private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬"]
-    private var emojiChoices = "🦇😱🙀😈🎃👻🍭🍬"
+    private var emojiChoices = "🦇😱🙀😈🎃👻🍭🍬👹👾🎩🌍"
     private var emoji = [Card: String]()
     
     private func emoji(for card: Card) -> String {
