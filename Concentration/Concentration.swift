@@ -51,9 +51,15 @@ struct Concentration {
         assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)): You chose a wrong number of pairs of cards")
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
-            cards += [card, card]
+            cards.insert(card, at: cards.count.arc4random)
+            cards.insert(card, at: cards.count.arc4random)
         }
         // TODO: Shuffle the cards
+//        var shuffledCards:[Card] = []
+//        for _ in 0..<cards.count {
+//            shuffledCards.append(cards.remove(at: cards.count.arc4random))
+//        }
+//        cards = shuffledCards
     }
 }
 
