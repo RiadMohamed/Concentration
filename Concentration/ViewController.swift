@@ -12,6 +12,29 @@ class ViewController: UIViewController {
     
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
+    
+    @IBAction func newGameButtonTapped(_ sender: UIButton) {
+        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+        flipCount = 0
+        updateViewFromModel()
+    }
+    
+    @IBAction private func touchCard(_ sender: UIButton) {
+        flipCount += 1
+        if let cardNumber = cardButtons.firstIndex(of: sender) {
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
+        } else {
+            print("Card not in buttons array")
+        }
+    }
+    
     var numberOfPairsOfCards: Int {
         return (cardButtons.count + 1)/2
     }
@@ -31,23 +54,6 @@ class ViewController: UIViewController {
         flipCountLabel.attributedText = attributedString
     }
     
-    @IBOutlet private var cardButtons: [UIButton]!
-    @IBOutlet private weak var flipCountLabel: UILabel! {
-        didSet {
-            updateFlipCountLabel()
-        }
-    }
-    
-    @IBAction private func touchCard(_ sender: UIButton) {
-        flipCount += 1
-        if let cardNumber = cardButtons.firstIndex(of: sender) {
-            game.chooseCard(at: cardNumber)
-            updateViewFromModel()
-        } else {
-            print("Card not in buttons array")
-        }
-    }
-    
     private func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -62,7 +68,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬"]
     private var emojiChoices = "🦇😱🙀😈🎃👻🍭🍬👹👾🎩🌍"
     private var emoji = [Card: String]()
     
