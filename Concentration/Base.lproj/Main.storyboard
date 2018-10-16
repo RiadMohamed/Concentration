@@ -280,6 +280,7 @@
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="h1t-Ow-yks" id="Hfl-wE-gUQ"/>
+                        <outlet property="newGameButton" destination="Rpo-03-ucU" id="i6d-s4-Ohn"/>
                         <outletCollection property="cardButtons" destination="DGQ-5e-qfC" collectionClass="NSMutableArray" id="erO-Pc-gsb"/>
                         <outletCollection property="cardButtons" destination="mN6-68-MA3" collectionClass="NSMutableArray" id="HJZ-Hn-GGy"/>
                         <outletCollection property="cardButtons" destination="dfl-D4-Pbr" collectionClass="NSMutableArray" id="Q8L-w4-mFf"/>

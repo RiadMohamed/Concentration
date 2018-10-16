@@ -11,7 +11,23 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    let randomThemeSelector = 10.arc4random % 2
+    lazy var backgroundColor: UIColor = (randomThemeSelector == 0) ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    lazy var faceDownColor: UIColor = (randomThemeSelector == 0) ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1) : #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+    lazy var faceUpColor: UIColor = (randomThemeSelector == 0) ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
     
+    override func viewDidLoad() {
+        view.backgroundColor = backgroundColor
+        updateViewFromModel()
+        updateFlipCountLabel()
+        newGameButton.setTitleColor(faceDownColor, for: .normal)
+    }
+
+    
+
+    
+    
+    @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private weak var flipCountLabel: UILabel! {
         didSet {
@@ -48,10 +64,10 @@ class ViewController: UIViewController {
     private func updateFlipCountLabel() {
         let attributes: [NSAttributedString.Key: Any] = [
             .strokeWidth :5.0,
-            .strokeColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            .strokeColor: faceDownColor
         ]
-        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
-        flipCountLabel.attributedText = attributedString
+        let attributedString1 = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString1
     }
     
     private func updateViewFromModel() {
@@ -60,10 +76,10 @@ class ViewController: UIViewController {
             let card = game.cards[index]
             if card.isFaceUp {
                 button.setTitle(emoji(for: card), for: .normal)
-                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                button.backgroundColor = faceUpColor
             } else {
                 button.setTitle("", for: .normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : faceDownColor
             }
         }
     }
