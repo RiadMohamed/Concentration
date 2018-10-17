@@ -246,10 +246,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ImL-n9-XeE">
-                                <rect key="frame" x="125.66666666666666" y="674" width="123.66666666666666" height="104"/>
+                                <rect key="frame" x="125.66666666666666" y="618" width="123.66666666666666" height="160"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpo-03-ucU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4re-4X-FBg">
                                         <rect key="frame" x="0.0" y="0.0" width="123.66666666666667" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpo-03-ucU">
+                                        <rect key="frame" x="0.0" y="56" width="123.66666666666667" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="New Game">
                                             <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -259,7 +265,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1t-Ow-yks">
-                                        <rect key="frame" x="0.0" y="56" width="123.66666666666667" height="48"/>
+                                        <rect key="frame" x="0.0" y="112" width="123.66666666666667" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -281,6 +287,7 @@
                     <connections>
                         <outlet property="flipCountLabel" destination="h1t-Ow-yks" id="Hfl-wE-gUQ"/>
                         <outlet property="newGameButton" destination="Rpo-03-ucU" id="i6d-s4-Ohn"/>
+                        <outlet property="scoreLabel" destination="4re-4X-FBg" id="Wn4-mD-Hi6"/>
                         <outletCollection property="cardButtons" destination="DGQ-5e-qfC" collectionClass="NSMutableArray" id="erO-Pc-gsb"/>
                         <outletCollection property="cardButtons" destination="mN6-68-MA3" collectionClass="NSMutableArray" id="HJZ-Hn-GGy"/>
                         <outletCollection property="cardButtons" destination="dfl-D4-Pbr" collectionClass="NSMutableArray" id="Q8L-w4-mFf"/>
