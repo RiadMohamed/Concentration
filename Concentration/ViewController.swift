@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         currentTheme = themes[0]
         view.backgroundColor = currentTheme!.backgroundColor
         updateViewFromModel(currentTheme!)
-        updateFlipCountLabel(currentTheme!)
         newGameButton.setTitleColor(currentTheme!.primaryColor, for: .normal)
     }
     
@@ -50,18 +49,15 @@ class ViewController: UIViewController {
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private weak var flipCountLabel: UILabel! {
         didSet {
-            updateFlipCountLabel(currentTheme ?? defaultTheme)
         }
     }
     
     @IBAction func newGameButtonTapped(_ sender: UIButton) {
         game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
-        flipCount = 0
         updateViewFromModel(currentTheme ?? defaultTheme)
     }
     
     @IBAction private func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel(currentTheme ?? defaultTheme)
@@ -73,21 +69,7 @@ class ViewController: UIViewController {
     var numberOfPairsOfCards: Int {
         return (cardButtons.count + 1)/2
     }
-    
-    private(set) var flipCount = 0 {
-        didSet {
-            updateFlipCountLabel(currentTheme ?? defaultTheme)
-        }
-    }
-    
-    private func updateFlipCountLabel(_ currentTheme: Theme) {
-        let attributes: [NSAttributedString.Key: Any] = [
-            .strokeWidth :5.0,
-            .strokeColor: currentTheme.primaryColor
-        ]
-        let attributedString1 = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
-        flipCountLabel.attributedText = attributedString1
-    }
+
     
     private func updateViewFromModel(_ currentTheme: Theme) {
         for index in cardButtons.indices {
@@ -102,6 +84,7 @@ class ViewController: UIViewController {
             }
         }
         scoreLabel.text = "Score: \(game.score)"
+        flipCountLabel.text = "Flips: \(game.flipCount)"
         
     }
     
