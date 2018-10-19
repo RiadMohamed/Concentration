@@ -72,20 +72,31 @@ class ConcentrationViewController: UIViewController {
 
     
     private func updateViewFromModel(_ currentTheme: Theme) {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: .normal)
-                button.backgroundColor = currentTheme.secondaryColor
-            } else {
-                button.setTitle("", for: .normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : currentTheme.primaryColor
+        if cardButtons != nil {
+            for index in cardButtons.indices {
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp {
+                    button.setTitle(emoji(for: card), for: .normal)
+                    button.backgroundColor = currentTheme.secondaryColor
+                } else {
+                    button.setTitle("", for: .normal)
+                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : currentTheme.primaryColor
+                }
+            }
+            scoreLabel.text = "Score: \(game.score)"
+            flipCountLabel.text = "Flips: \(game.flipCount)"
+        }
+    }
+    
+    var theme: String? {
+        didSet {
+            emojiChoices = theme ?? ""
+            emoji = [:]
+            if currentTheme != nil {
+                updateViewFromModel(currentTheme!)
             }
         }
-        scoreLabel.text = "Score: \(game.score)"
-        flipCountLabel.text = "Flips: \(game.flipCount)"
-        
     }
     
     private var emojiChoices = "🦇😱🙀😈🎃👻🍭🍬👹👾🎩🌍"
