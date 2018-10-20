@@ -29,7 +29,6 @@ class ConcentrationViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        print("viewDidLoad called")
         addThemes()
         currentTheme = themes[0]
         view.backgroundColor = currentTheme!.backgroundColor

@@ -11,9 +11,9 @@ import UIKit
 class ConcentrationThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
     
     let themes = [
-        "Sports": "ABCDEFGHIJK",
-        "Animals": "LMNOPQRSTUV",
-        "Faces": "WXYZ0123456"
+        "Sports": "🤾‍♀️⚽️🏈🏀🎱🏉🏐🎾",
+        "Animals": "🐶🐱🐭🐹🦊🐸🐵🐧",
+        "Faces": "😇😃🤪😱🤯😡😎😍"
     ]
     
     
